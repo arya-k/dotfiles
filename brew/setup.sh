@@ -35,6 +35,8 @@ apps=(
     tree
     python@2
     python3
+    zsh
+    fasd
 )
 
 brew install "${apps[@]}"
@@ -66,14 +68,15 @@ qlplugins=(
 
 brew cask install "${qlplugins[@]}"
 
-apps=(
-    1091189122 # Bear
-    409201541 # Pages
-    409203825 # Numbers
-    409183694 # Keynote
-)
+cat <<EOF
+Please log into the App store and install:
+Bear
+Pages
+Numbers
+Keynote
+EOF
 
-mas install "${apps[@]}"
+
 
 # San Fransisco Mono font
 sudo cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
