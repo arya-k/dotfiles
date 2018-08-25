@@ -1,0 +1,7 @@
+{
+    "editor.fontFamily": "Roboto Mono Medium,Monaco",
+    "editor.fontSize": "13",
+    "workbench.colorTheme": "Material Theme",
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "materialTheme.fixIconsRunning": false
+}
