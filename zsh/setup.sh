@@ -12,7 +12,7 @@ function green {
 }
 
 # Start by changing the default shell
-green 'Escalating privelages'
+green 'Escalating privilages'
 sudo -v
 
 green 'Changing default shell for macOS'
@@ -23,15 +23,14 @@ username=$(whoami)
 sudo chsh -s /usr/local/bin/zsh $username &> /dev/null
 
 # Install pure prompt
+rm -f ~/.dotfiles/zsh/prompt_pure_setup
+rm -f ~/.dotfiles/zsh/async
+
 green 'Installing pure prompt'
-if [ ! -f prompt_pure_setup ]; then
-	green 'Downloading prompt_pure_setup.'
-	curl -sS "https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh" > prompt_pure_setup
-fi
-if [ ! -f async ]; then
-	green 'Downloading async.'
-	curl -sS "https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh" > async
-fi
+curl -sS "https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh" > ~/.dotfiles/zsh/prompt_pure_setup
+
+green 'Downloading async.'
+curl -sS "https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh" > ~/.dotfiles/zsh/async
 
 # Move .zshrc to correct location
 green 'Installing zshrc'
