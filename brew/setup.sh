@@ -25,27 +25,28 @@ else
     green "Homebrew already installed."
 fi
 
+green "Updating + Upgrading Homebrew"
 brew update
 brew upgrade
 
 apps=(
     ffmpeg
-    mackup
     wget
     tree
     python@2
     python3
     zsh
     fasd
+    dockutil
 )
 
+green "Installing cli tools"
 brew install "${apps[@]}"
 
 apps=(
     font-roboto-mono
     iina
-    caprine
-    sublime-text
+    visual-studio-code
     the-unarchiver
     transmission
     polymail
@@ -55,6 +56,7 @@ apps=(
     karabiner-elements
 )
 
+green "Installing applications..."
 brew tap homebrew/cask-fonts
 brew cask install "${apps[@]}"
 
@@ -66,6 +68,7 @@ qlplugins=(
     qlimagesize
 )
 
+green "Installing Quicklook Plugins"
 brew cask install "${qlplugins[@]}"
 
 cat <<EOF
@@ -76,10 +79,11 @@ Numbers
 Keynote
 EOF
 
+echo -n 'Press ENTER after installing. ' && read
 
-
-# San Fransisco Mono font
+green "Installing SFMono"
 sudo cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
 
+green "Cleaning up Homebrew"
 brew cleanup
 exit 0
