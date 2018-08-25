@@ -37,6 +37,6 @@ function white {
 }
 
 function cmd {
-    echo -e "${yellow}❯ ${bold}${1}${normal}"
+    echo -e "${yellow}❯ ${bold}${@}${normal}"
     echo ${1} | zsh
 }
