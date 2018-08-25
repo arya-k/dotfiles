@@ -3,5 +3,6 @@
     "editor.fontSize": "13",
     "workbench.colorTheme": "Material Theme",
     "workbench.iconTheme": "eq-material-theme-icons",
-    "materialTheme.fixIconsRunning": false
+    "materialTheme.fixIconsRunning": false,
+    "window.zoomLevel": 0
 }
