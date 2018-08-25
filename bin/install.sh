@@ -11,10 +11,10 @@ if [ $? -ne 0 ]; then
 fi
 
 # Then, install homebrew stuff first:
-source ~/.dotfiles/brew/setup.sh
+/bin/bash ~/.dotfiles/brew/setup.sh
 
 # Next, install zsh
-source ~/.dotfiles/zsh/setup.sh
+/bin/bash ~/.dotfiles/zsh/setup.sh
 
 # Next, switch to zsh:
 /usr/local/bin/zsh <<EOF
