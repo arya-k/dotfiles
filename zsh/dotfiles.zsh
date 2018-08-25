@@ -9,11 +9,11 @@ sub_help() {
 }
 
 sub_pull() {
-    echo "TODO Pull"
+    source ~/.dotfiles/bin/pull.zsh
 }
 
 sub_push() {
-    echo "TODO Push"
+    source ~/.dotfiles/bin/push.zsh
 }
 
 dotfiles () {
