@@ -20,7 +20,7 @@ source $slim_path/aliases.zsh
 source $slim_path/utils.zsh
 source $slim_path/dotfiles.zsh
 
-export EDITOR='/usr/local/bin/code --wait'
+export EDITOR='/usr/local/bin/subl -w'
 PATH='/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin'
 
 if command -v fasd >/dev/null 2>&1; then

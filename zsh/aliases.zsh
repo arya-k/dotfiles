@@ -27,3 +27,12 @@ clean() {
   brew cleanup
   brew cask cleanup
 }
+
+# SSH
+um() {
+  sshpass -p"$(/usr/bin/security find-generic-password -s remote.tjhsst.edu -w)" ssh um
+}
+
+tj() {
+  sshpass -p"$(/usr/bin/security find-generic-password -s remote.tjhsst.edu -w)" ssh tj
+}
