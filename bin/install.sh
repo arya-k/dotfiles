@@ -36,3 +36,7 @@ source ~/.dotfiles/icons/setup.sh
 
 # Install macos config
 source ~/.dotfiles/macos/setup.sh
+
+# Install vim
+ln -s ~/.dotfiles/vim ~/.vim
+ln -s ~/.dotfiles/vim/.vimrc ~
