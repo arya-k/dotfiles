@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/arya/Desktop/pycrazyswarm/crazyflie-firmware/src/modules/interface'
+let g:netrw_dirhist_2='/Users/arya/Documents/bc19/bots'
+let g:netrw_dirhist_3='/Users/arya/Documents/bc19/bots/ajith'
+let g:netrw_dirhist_4='/Users/arya/Desktop/cs/scripts/pycrazyswarm'
+let g:netrw_dirhist_5='/Users/arya/Desktop/cs/scripts/pycrazyswarm/visualizer'
+let g:netrw_dirhist_6='/Users/arya/Desktop/cs/scripts/pycrazyswarm'
+let g:netrw_dirhist_7='/Users/arya/Desktop/cs/scripts/pycrazyswarm/visualizer'
