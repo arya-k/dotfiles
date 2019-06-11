@@ -22,7 +22,16 @@ source $slim_path/dotfiles.zsh
 
 export EDITOR='/usr/local/bin/subl -w'
 PATH='/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin'
+PATH="$HOME/.cargo/bin:$PATH"
 
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
 fi
+
+# export WORKON_HOME="/Users/arya/.virtualenvs"
+# source /usr/local/bin/virtualenvwrapper.sh
+
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

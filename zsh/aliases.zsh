@@ -5,6 +5,8 @@ alias grep='grep --color=auto'
 alias ..='cd ../'
 alias ls="ls -GF"
 
+alias man=tldr
+
 # GIT
 
 alias gd='git diff'
@@ -29,10 +31,13 @@ clean() {
 }
 
 # SSH
-um() {
-  sshpass -p"$(/usr/bin/security find-generic-password -s remote.tjhsst.edu -w)" ssh um
-}
-
 tj() {
   sshpass -p"$(/usr/bin/security find-generic-password -s remote.tjhsst.edu -w)" ssh tj
+}
+
+# COMPILING
+rc() {
+  rustc $1.rc
+  ./$1
+  rm ./$1
 }

@@ -9,15 +9,15 @@ spoon.ReloadConfiguration:start()
 -- HYPER APPLICATION BINDINGS:
 application_bindings = {
     ["S"] = "Safari",
-    ["V"] = "Sublime Text",
+    ["D"] = "Sublime Text",
     ["C"] = "Calendar",
     ["T"] = "Terminal",
     ["B"] = "Bear",
     ["E"] = "Mail",
-    ["M"] = "Goofy",
+    ["M"] = "Messenger",
     ["I"] = "iTunes",
     ["R"] = "Transmission",
-    ["P"] = "Pages"
+    ["P"] = "Pages",
 }
 
 for k,v in pairs(application_bindings) do
