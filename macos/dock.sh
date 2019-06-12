@@ -28,17 +28,21 @@ defaults write com.apple.dock autohide -bool true
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
-# Enable magnification
+# disable magnification
 defaults write com.apple.dock magnification -bool false
-defaults write com.apple.dock tilesize -float 67
+defaults write com.apple.dock tilesize -float 120
 
 green 'Setting up applications for the dock'
 dockutil --no-restart --remove all
-dockutil --no-restart --add "/Applications/Itunes.app"
-dockutil --no-restart --add "/Applications/System Preferences.app"
-dockutil --no-restart --add "/Applications/Polymail.app"
 dockutil --no-restart --add "/Applications/Safari.app"
-dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
+
+if test -d "/Applications/Utilities/Terminal.app"
+then
+    dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
+else
+    dockutil --no-restart --add "/System/Applications/Utilities/Terminal.app"
+fi
+
 dockutil --no-restart --add "/Applications/Bear.app"
 dockutil --no-restart --add "/Applications/Sublime Text.app"
 

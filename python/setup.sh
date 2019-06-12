@@ -25,7 +25,7 @@ echo "#\!/bin/bash" > /usr/local/bin/pip
 echo "echo Please specify pip2 or pip3" >> /usr/local/bin/pip
 chmod +x /usr/local/bin/pip
 
-# Install standard and common libraries
+# Install common libraries
 green 'Installing standard libraries.'
 python2 -m pip install --quiet --user numpy scipy matplotlib requests
 python2 -m pip install --quiet --user numpy scipy matplotlib requests

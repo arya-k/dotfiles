@@ -36,7 +36,6 @@ apps=(
     python@2
     python3
     zsh
-    fasd
     dockutil
 )
 
@@ -46,12 +45,9 @@ brew install "${apps[@]}"
 apps=(
     font-roboto-mono
     iina
-    visual-studio-code
+    sublime-text
     the-unarchiver
     transmission
-    polymail
-    skype
-    goofy
     hammerspoon
     karabiner-elements
 )
@@ -77,12 +73,18 @@ Bear
 Pages
 Numbers
 Keynote
+Wipr
 EOF
 
 echo -n 'Press ENTER after installing. ' && read
 
-green "Installing SFMono"
-sudo cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
+green "Installing San Fransisco fonts"
+if test -d /Applications/Utilities/Terminal.app
+then
+    sudo cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
+else
+    sudo cp -R /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
+fi
 
 green "Cleaning up Homebrew"
 brew cleanup

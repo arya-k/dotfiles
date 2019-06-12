@@ -3,6 +3,8 @@
 # hyperkey
 #
 # Setups Hammerspoon and Karabiner Elements configs for Hyperkey setup
+source ~/.zshrc
+
 green 'Removing default configs'
 rm -Rf ~/.hammerspoon
 rm -Rf ~/.config/karabiner

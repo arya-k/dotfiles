@@ -4,7 +4,6 @@ alias less='less -R'
 alias grep='grep --color=auto'
 alias ..='cd ../'
 alias ls="ls -GF"
-
 alias man=tldr
 
 # GIT

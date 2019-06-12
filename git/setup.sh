@@ -13,4 +13,6 @@ ln -s ~/.dotfiles/git/.gitconfig ~
 
 green 'Setting global name and email'
 git config --global user.name "Arya Kumar"
-git config --global user.email "2019akumar2@tjhsst.edu"
+git config --global user.email "thearyaskumar@icloud.com"
+
+(cd ~/.dotfiles && git remote set-url origin git@github.com:arya-k/dotfiles.git)
