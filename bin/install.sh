@@ -4,7 +4,11 @@
 #
 # Installs everything, step by step.
 
-# First, instal cli tools
+# At the very beginning, setup the ssh keys:
+rm -rf ~/.ssh
+ln -s ~/Library/CloudStorage/iCloud\ Drive/ssh ~/.ssh
+
+# Afterwards, instal cli tools
 xcode-select -p &> /dev/null
 if [ $? -ne 0 ]; then
    xcode-select --install
