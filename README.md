@@ -10,6 +10,7 @@ The main code for setup is in the `bin` folder. The `install.sh` script runs set
 Before using this, ensure that you've created a computer with the username `arya`, and that icloud has been logged in. Sync Desktop and Documents, etc.
 
 Run the command `git clone git@github.com:arya-k/dotfiles.git ~/.dotfiles`
+
 Afterwards, run `bash ~/.dotfiles/bin/install.sh`
 
 ### Modules
