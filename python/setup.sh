@@ -28,4 +28,4 @@ chmod +x /usr/local/bin/pip
 # Install common libraries
 green 'Installing standard libraries.'
 python2 -m pip install --quiet --user numpy scipy matplotlib requests
-python2 -m pip install --quiet --user numpy scipy matplotlib requests
+python3 -m pip install --quiet --user numpy scipy matplotlib requests
