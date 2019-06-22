@@ -6,7 +6,7 @@
 
 # At the very beginning, setup the ssh keys:
 rm -rf ~/.ssh
-ln -s ~/Library/CloudStorage/iCloud\ Drive/ssh ~/.ssh
+ln -s ~/Library/Mobile Documents/com~apple~CloudDocs/ssh ~/.ssh
 
 # Afterwards, instal cli tools
 xcode-select -p &> /dev/null
