@@ -24,3 +24,7 @@ Afterwards, run `bash ~/.dotfiles/bin/install.sh`
  - theme: *Themes the wallpapers, symlinks a `Wallpaper` folder in `~/Library`. Also sets terminal theme.*
  - vim: *Vim config. Fairly minimal, but will be customized furthar once I'm more adept with the editor.*
  - zsh: *Use ZSH as default shell with better code completion, and pure prompt.*
+
+### TODO
+ - [ ] Terminal themeing in theme restarts terminal, meaning that we have to run macos manually.
+ - [ ] Sublime text waiting did not work? Perhaps calling the script wrong
