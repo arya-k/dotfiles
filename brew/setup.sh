@@ -37,6 +37,8 @@ apps=(
     python3
     zsh
     dockutil
+    bat
+    tldr
 )
 
 green "Installing cli tools"
