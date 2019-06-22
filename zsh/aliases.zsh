@@ -5,6 +5,7 @@ alias grep='grep --color=auto'
 alias ..='cd ../'
 alias ls="ls -GF"
 alias man=tldr
+alias cat="bat -p --paging=never"
 
 # GIT
 
