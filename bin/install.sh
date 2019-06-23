@@ -33,7 +33,7 @@ source ~/.dotfiles/git/setup.sh
 source ~/.dotfiles/python/setup.sh
 
 # Install app configs:
-source ~/.dotfiles/appconfigs/setup.sh
+/usr/local/bin/zsh ~/.dotfiles/appconfigs/setup.sh
 
 # Install hyperkey:
 source ~/.dotfiles/hyperkey/setup.sh

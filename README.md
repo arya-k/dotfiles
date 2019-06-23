@@ -27,4 +27,3 @@ Afterwards, run `bash ~/.dotfiles/bin/install.sh`
 
 ### TODO
  - [ ] Terminal themeing in theme restarts terminal, meaning that we have to run macos manually.
- - [ ] Sublime text waiting did not work? Perhaps calling the script wrong
