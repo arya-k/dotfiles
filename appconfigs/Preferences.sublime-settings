@@ -1,20 +1,20 @@
 {
-    "auto_complete": false,
-    "bold_folder_labels": true,
-    "close_windows_when_empty": true,
-    "color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
-    "font_face": "Roboto Mono",
-    "font_size": 18,
-    "highlight_line": true,
-    "highlight_modified_tabs": true,
-    "ignored_packages":
-    [
-        "Vintage"
-    ],
-    "line_padding_bottom": 1,
-    "line_padding_top": 1,
-    "mini_diff": "auto",
-    "scroll_past_end": true,
-    "theme": "ayu-mirage.sublime-theme",
-    "translate_tabs_to_spaces": true
+	"auto_complete": false,
+	"bold_folder_labels": true,
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"font_face": "Roboto Mono",
+	"font_size": 15,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"mini_diff": "auto",
+	"scroll_past_end": true,
+	"theme": "ayu-mirage.sublime-theme",
+	"translate_tabs_to_spaces": true
 }
