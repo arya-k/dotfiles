@@ -7,6 +7,7 @@ prompt pure
 
 autoload -U compinit
 compinit
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 
 setopt autocd
 setopt extendedglob
@@ -19,6 +20,9 @@ source $slim_path/completion.zsh
 source $slim_path/aliases.zsh
 source $slim_path/utils.zsh
 source $slim_path/dotfiles.zsh
+
+# vim keybinding mode:
+bindkey -v
 
 export EDITOR='/usr/local/bin/subl -w'
 PATH='/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin'

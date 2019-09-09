@@ -30,9 +30,9 @@ clean() {
   brew cask cleanup
 }
 
-# SSH
-tj() {
-  sshpass -p"$(/usr/bin/security find-generic-password -s remote.tjhsst.edu -w)" ssh tj
+caen() {
+    PASSWORD=$(security find-generic-password -a arkumar -s login.engin.umich.edu -w)
+    ~/.ssh/auto/caen.ssh $PASSWORD
 }
 
 # COMPILING

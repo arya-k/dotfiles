@@ -17,6 +17,9 @@ fi
 # Then, install homebrew stuff:
 /bin/bash ~/.dotfiles/brew/setup.sh
 
+# Then, install rust:
+curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
+
 # Next, install zsh
 /bin/bash ~/.dotfiles/zsh/setup.sh
 
