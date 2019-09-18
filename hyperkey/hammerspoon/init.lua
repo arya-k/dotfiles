@@ -18,7 +18,7 @@ application_bindings = {
     ["I"] = "iTunes",
     ["R"] = "Transmission",
     ["P"] = "Pages",
-    ["X"] = "XiEditor",
+    ["X"] = "Texpad",
 }
 
 for k,v in pairs(application_bindings) do
@@ -70,4 +70,23 @@ hs.hotkey.bind(hyper, "L", function()
     f.x, f.y = max.x + (max.w / 2), max.y
     f.w, f.h = max.w / 2, max.h
     win:setFrame(f)
+end)
+
+-- LaTeXify function
+hs.hotkey.bind({"cmd", "alt"}, "L", function()
+    local raw = hs.pasteboard.getContents()
+    if raw ~= nil then
+        processed = raw:gsub("∃", "\\exists ")
+                       :gsub("∀", "\\forall ")
+                       :gsub("∧", "\\wedge ")
+                       :gsub("∨", "\\vee ")
+                       :gsub("¬", "\\neg ")
+                       :gsub("→", "\\rightarrow ")
+                       :gsub("↔", "\\leftrightarrow ")
+                       :gsub("=", "\\eq ")
+                       :gsub("≠", "\\neq ")
+                       :gsub("−", "-") -- strange minus sign
+        hs.pasteboard.setContents(processed)
+        hs.alert.show("Processed LaTeX")
+    end
 end)
