@@ -16,6 +16,7 @@ alias gl='git pull'
 alias gp='git push'
 alias gpp='git pull; git push'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+alias gc='git commit -m '
 
 untar() {
   tar -xvf $1
