@@ -17,6 +17,11 @@ alias gp='git push'
 alias gpp='git pull; git push'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
 
+untar() {
+  tar -xvf $1
+  rm $1
+}
+
 # Package Managers:
 
 update() {
