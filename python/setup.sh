@@ -8,7 +8,6 @@ source ~/.zshrc
 
 # Upgrade the python installations
 green 'Updating python installations'
-python2 -m pip install --quiet --upgrade pip setuptools wheel
 python3 -m pip install --quiet --upgrade pip setuptools wheel
 
 # Remove the extra python2 installation
@@ -16,16 +15,10 @@ green 'Removing extra python install'
 rm -f /usr/local/bin/{python,pip}
 
 # Disallow a generic python command - force python2 or python3
-green 'Disallowing generic python command'
-echo "#\!/bin/bash" > /usr/local/bin/python
-echo "echo Please specify python2 or python3" >> /usr/local/bin/python
-chmod +x /usr/local/bin/python
-
-echo "#\!/bin/bash" > /usr/local/bin/pip
-echo "echo Please specify pip2 or pip3" >> /usr/local/bin/pip
-chmod +x /usr/local/bin/pip
+green 'Linking python3 to default'
+ln -s /usr/local/bin/python3 /usr/local/bin/python
+ln -s /usr/local/bin/pip3 /usr/local/bin/pip
 
 # Install common libraries
 green 'Installing standard libraries.'
-python2 -m pip install --quiet --user numpy scipy matplotlib requests
 python3 -m pip install --quiet --user numpy scipy matplotlib requests

@@ -33,7 +33,6 @@ apps=(
     ffmpeg
     wget
     tree
-    python@2
     python3
     zsh
     dockutil

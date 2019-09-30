@@ -76,7 +76,9 @@ end)
 hs.hotkey.bind({"cmd", "alt"}, "L", function()
     local raw = hs.pasteboard.getContents()
     if raw ~= nil then
-        processed = raw:gsub("∃", "\\exists ")
+        processed = raw:gsub(" ", "") -- remove whitespace first.
+                       :gsub("≡", "\\equiv")
+                       :gsub("∃", "\\exists ")
                        :gsub("∀", "\\forall ")
                        :gsub("∧", "\\wedge ")
                        :gsub("∨", "\\vee ")
