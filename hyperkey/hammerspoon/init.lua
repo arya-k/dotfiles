@@ -18,7 +18,7 @@ application_bindings = {
     ["I"] = "Music",
     ["R"] = "Transmission",
     ["P"] = "Pages",
-    ["X"] = "Texpad",
+    ["N"] = "Notes"
 }
 
 for k,v in pairs(application_bindings) do
@@ -91,24 +91,57 @@ hs.hotkey.bind(hyper, "L", function() moveWindow(0.5, 0.0, 0.5, 1.0) end)
 hs.hotkey.bind(hyper, "J", function() moveWindow(nil, 0.0, nil, 0.5) end)
 hs.hotkey.bind(hyper, "K", function() moveWindow(nil, 0.5, nil, 0.5) end)
 
+-- WORKSPACE BINDINGS
+workspaceMenu = hs.menubar.new():setTitle("~")
 
--- LaTeXify function
-hs.hotkey.bind({"cmd", "alt"}, "L", function()
-    local raw = hs.pasteboard.getContents()
-    if raw ~= nil then
-        processed = raw:gsub(" ", "") -- remove whitespace first.
-                       :gsub("≡", "\\equiv")
-                       :gsub("∃", "\\exists ")
-                       :gsub("∀", "\\forall ")
-                       :gsub("∧", "\\wedge ")
-                       :gsub("∨", "\\vee ")
-                       :gsub("¬", "\\neg ")
-                       :gsub("→", "\\rightarrow ")
-                       :gsub("↔", "\\leftrightarrow ")
-                       :gsub("=", "\\eq ")
-                       :gsub("≠", "\\neq ")
-                       :gsub("−", "-") -- strange minus sign
-        hs.pasteboard.setContents(processed)
-        hs.alert.show("Processed LaTeX")
+function moveSpecifiedWindowLR(LR, win)
+    local f = win:frame()
+    local max = win:screen():frame()
+    if LR == "L" then
+        f.x, f.y = max.x, max.y
+    else
+        f.x, f.y = max.x + (max.w * 0.5), max.y
     end
-end)
+    f.w, f.h = max.w * 0.5, max.h
+    win:setFrame(f)
+end
+
+WORKSPACES = {
+    { title="~", fn=function() workspaceMenu:setTitle("~") end },
+
+    { title="~eecs281", fn=function() 
+        workspaceMenu:setTitle("~eecs281")
+        hs.alert.show("TODO: eecs281")
+    end },
+
+    { title="~math217", fn=function() 
+        workspaceMenu:setTitle("~math217") 
+        hs.alert.show("TODO: math217")
+    end },
+
+    { title="~battle", fn=function() 
+        workspaceMenu:setTitle("~battle")
+        hs.alert.show("TODO: battlecode")
+    end },
+
+    { title="~usaco", fn=function() 
+        workspaceMenu:setTitle("~usaco")
+        hs.osascript.applescript([[
+            tell application "Safari" 
+                make new document with properties {URL:"http://train.usaco.org"}
+                activate
+            end tell
+        ]])
+        moveSpecifiedWindowLR("L", hs.application.find("com.apple.Safari"):focusedWindow())
+
+        hs.execute("/usr/local/bin/subl --project ~/Documents/usaco/usaco.sublime-project")
+        moveSpecifiedWindowLR("R", hs.application.find("com.sublimetext.3"):focusedWindow())
+    end },
+}
+
+for k, v in ipairs(WORKSPACES) do
+    v["shortcut"] = tostring(k-1)
+    hs.hotkey.bind(hyper, tostring(k-1), v["fn"])
+end
+
+workspaceMenu:setMenu(WORKSPACES)
