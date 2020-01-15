@@ -43,7 +43,7 @@ clean() {
 
 caen() {
     PASSWORD=$(security find-generic-password -a arkumar -s login.engin.umich.edu -w)
-    echo -n -e "\033]0;ssh caen\007" && ~/.ssh/auto/caen.ssh $PASSWORD
+    ~/.ssh/auto/caen.ssh $PASSWORD
 }
 
 # COMPILING
