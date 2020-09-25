@@ -13,12 +13,10 @@ application_bindings = {
     ["D"] = "Sublime Text",
     ["C"] = "Calendar",
     ["T"] = "Terminal",
-    ["B"] = "Bear",
     ["E"] = "Mail",
     ["I"] = "Music",
-    ["R"] = "Transmission",
-    ["P"] = "Pages",
-    ["N"] = "Notes"
+    ["V"] = "Visual Studio Code",
+    ["M"] = "Goofy"
 }
 
 for k,v in pairs(application_bindings) do
@@ -27,73 +25,66 @@ for k,v in pairs(application_bindings) do
     end)
 end
 
-hs.hotkey.bind(hyper, "M", function()
-    hs.osascript.applescript([[
-    	# start by opening Safari:
-    	tell application "Safari" to launch
-    	
-    	# try to open the tab if it exists
-    	tell application "Safari"
-    		repeat with win in every window
-    			repeat with t in every tab of win
-    				if "https://www.messenger.com" is in (URL of t as string) then
-    					set current tab of win to t
-    					set index of win to 1
-    					return
-    				end if
-    			end repeat
-    		end repeat
-    	end tell
-    	
-    	# try to open in an empty tab if it exists:
-    	tell application "Safari"
-    		repeat with win in every window
-    			repeat with t in every tab of win
-    				if (URL of t as string) is equal to "favorites://" then
-    					set URL of t to "https://www.messenger.com/"
-    					set current tab of win to t
-    					set index of win to 1
-    					return
-    				end if
-    			end repeat
-    		end repeat
-    	end tell
-    	
-    	# otherwise, open the webpage
-    	do shell script "open https://www.messenger.com"
-    ]])
+hs.hotkey.bind(hyper, "G", function()
+    hs.screen.setForceToGray(not hs.screen.getForceToGray())
 end)
 
 -- WINDOW MANIPULATION:
 hs.window.animationDuration = 0
-function moveWindow(x, y, w, h)
+function moveWindow(dir)
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local max = win:screen():frame()
 
-    if x == nil then
-        f.x, f.y = f.x, max.y + (max.h * y)
-    else
-        f.x, f.y = max.x + (max.w * x), max.y + (max.h * y)
+    function closeTo(x, y, w, h)
+        local epsilon = math.min(f.w, f.h)/10
+
+        local cx, cy = f.x + f.w/2, f.y + f.h/2
+        local tx, ty = x + w/2, y + h/2
+        return math.abs(cx-tx) < epsilon and
+               math.abs(cy-ty) < epsilon
     end
 
-    if w == nil then
-        f.w, f.h = f.w, max.h * h
-    else
-        f.w, f.h = max.w * w, max.h * h
+    -- determine the window's current box.
+    local currentBox = "C"
+    if closeTo(max.x, max.y, max.w/2, max.h) then
+        currentBox = "L"
+    elseif closeTo(max.x + (max.w/2), max.y, max.w/2, max.h) then
+        currentBox = "R"
     end
-    win:setFrame(f)
+
+    function setBounds(target)
+        local max = win:screen():frame()
+        f.y, f.h = max.y, max.h
+        if target == "C" then
+            f.x, f.w = max.x, max.w
+        elseif target == "L" then
+            f.x, f.w = max.x, max.w/2
+        elseif target == "R" then
+            f.x, f.w = max.x + (max.w/2), max.w/2
+        end
+        win:setFrame(f)
+    end
+
+    if currentBox == "C" then -- goal: adjust in same screen
+        setBounds(dir)
+    elseif currentBox ~= dir then -- goal: shift to center
+        setBounds("C")
+    else -- goal: move to next monitor in given direction
+        if dir == "L" and win:screen():toWest() ~= nil then
+            win:moveOneScreenWest()
+            setBounds("R")
+        elseif dir == "R" and win:screen():toEast() ~= nil then
+            win:moveOneScreenEast()
+            setBounds("L")
+        end
+    end
 end
 
-hs.hotkey.bind(hyper, "return", function() moveWindow(0.0, 0.0, 1.0, 1.0) end)
-hs.hotkey.bind(hyper, "H", function() moveWindow(0.0, 0.0, 0.5, 1.0) end)
-hs.hotkey.bind(hyper, "L", function() moveWindow(0.5, 0.0, 0.5, 1.0) end)
-hs.hotkey.bind(hyper, "J", function() moveWindow(nil, 0.0, nil, 0.5) end)
-hs.hotkey.bind(hyper, "K", function() moveWindow(nil, 0.5, nil, 0.5) end)
+hs.hotkey.bind(hyper, "H", function() moveWindow("L") end)
+hs.hotkey.bind(hyper, "L", function() moveWindow("R") end)
 
 -- WORKSPACE BINDINGS
-workspaceMenu = hs.menubar.new():setTitle("~")
-
 function moveSpecifiedWindowLR(LR, win)
     local f = win:frame()
     local max = win:screen():frame()
@@ -139,9 +130,10 @@ WORKSPACES = {
     end },
 }
 
-for k, v in ipairs(WORKSPACES) do
-    v["shortcut"] = tostring(k-1)
-    hs.hotkey.bind(hyper, tostring(k-1), v["fn"])
-end
+-- workspaceMenu = hs.menubar.new():setTitle("~")
+-- for k, v in ipairs(WORKSPACES) do
+--     v["shortcut"] = tostring(k-1)
+--     hs.hotkey.bind(hyper, tostring(k-1), v["fn"])
+-- end
 
-workspaceMenu:setMenu(WORKSPACES)
+-- workspaceMenu:setMenu(WORKSPACES)
