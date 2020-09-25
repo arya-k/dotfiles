@@ -38,13 +38,14 @@ apps=(
     dockutil
     bat
     tldr
+    starship
 )
 
 green "Installing cli tools"
 brew install "${apps[@]}"
 
 apps=(
-    font-roboto-mono
+    font-roboto-mono-nerd-font
     iina
     sublime-text
     the-unarchiver
