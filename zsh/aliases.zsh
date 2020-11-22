@@ -3,7 +3,6 @@
 alias less='less -R'
 alias grep='grep --color=auto'
 alias ls="ls -GF"
-alias man=tldr
 alias cat="bat -p --paging=never"
 
 untar() {
@@ -32,11 +31,4 @@ clean() {
 caen() {
     PASSWORD=$(security find-generic-password -a arkumar -s login.engin.umich.edu -w)
     ~/.ssh/auto/caen.ssh $PASSWORD
-}
-
-# COMPILING
-rc() {
-  rustc $1.rc
-  ./$1
-  rm ./$1
 }
